@@ -1,0 +1,55 @@
+.content-center {
+  --background: linear-gradient(135deg, #6a0dad, #9b59b6);
+}
+
+.full-height {
+  height: 100%;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  font-size: 120px;
+  color: #fff;
+}
+
+.welcome-text {
+  color: white;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.button-card {
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  background: #ffffffee;
+}
+
+ion-button {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+ 
+ion-header, ion-toolbar {
+  --background: transparent !important;
+  --ion-color-base: transparent !important;
+  box-shadow: none; /* quita la línea de sombra */
+  color: white; /* para que el texto se vea claro */
+}
+
+ion-header, ion-toolbar {
+  --background: transparent !important; /* fondo transparente */
+  --ion-color-base: transparent !important;
+  box-shadow: none; /* quita línea de sombra */
+}
+
+ion-title {
+  color: white !important; /* título visible */
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* para que resalte sobre el fondo */
+}

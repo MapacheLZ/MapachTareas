@@ -1,0 +1,24 @@
+:root {
+  /** Color primario (morado) **/
+  --ion-color-primary: #9c27b0;
+  --ion-color-primary-rgb: 156, 39, 176;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #87239c;
+  --ion-color-primary-tint: #a63ec2;
+
+  /** Colores secundarios opcionales **/
+  --ion-color-secondary: #e91e63;
+  --ion-color-secondary-rgb: 233, 30, 99;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #c2185b;
+  --ion-color-secondary-tint: #ec407a;
+
+  --ion-color-tertiary: #00bcd4;
+  --ion-color-tertiary-rgb: 0, 188, 212;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #0097a7;
+  --ion-color-tertiary-tint: #26c6da;
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-center">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center full-height">
+      <ion-col size="12" size-md="8" size-lg="6" class="ion-text-center">
+        
+        <!-- Logo -->
+        <div class="logo-container animate__animated animate__zoomIn">
+          <ion-icon name="rocket-outline" class="logo-icon"></ion-icon>
+        </div>
+
+        <!-- Texto -->
+        <h2 class="welcome-text animate__animated animate__bounceInDown">
+          Bienvenido a <strong>MapachTareas</strong>
+        </h2>
+
+        <!-- Botones -->
+        <ion-card class="ion-padding button-card animate__animated animate__fadeInUpBig">
+          <ion-button expand="block" color="primary"
+            routerLink="/inicio-sesion"
+            class="animate__animated animate__pulse animate__infinite">
+            Iniciar Sesión
+          </ion-button>
+
+          <ion-button expand="block" color="secondary"
+            routerLink="/registro"
+            class="animate__animated animate__pulse animate__infinite animate__delay-1s">
+            Registrarse
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

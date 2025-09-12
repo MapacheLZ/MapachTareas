@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alarmas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let alarma of alarmas">{{ alarma }}</ion-item>
+  </ion-list>
+
+  <ion-button expand="full">Agregar Alarma</ion-button>
+</ion-content>
