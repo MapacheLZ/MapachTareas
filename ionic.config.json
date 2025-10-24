@@ -1,0 +1,7 @@
+{
+  "name": "MapachTareas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

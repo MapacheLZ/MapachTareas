@@ -1,0 +1,24 @@
+ion-item {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+ion-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.01);
+}
+
+ion-label h2.desactivada {
+  color: gray;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+ion-button[color="success"] {
+  transition: transform 0.15s ease;
+}
+
+ion-list {
+  margin-top: 20px;
+}

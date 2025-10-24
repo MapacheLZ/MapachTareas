@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>MapachTareas</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-padding">
+
+  <!-- Crear nueva alarma -->
+  <ion-item>
+    <ion-input type="time" [(ngModel)]="nuevaHora"></ion-input>
+    <ion-input placeholder="Título" [(ngModel)]="nuevoTitulo"></ion-input>
+    <ion-button
+      color="success"
+      [@botonPulse]="botonEstado"
+      (click)="agregarAlarma()"
+    >
+      Agregar
+    </ion-button>
+  </ion-item>
+
+  <!-- Listado animado -->
+  <ion-list [@listaAnimada]>
+    <ion-item *ngFor="let alarma of alarmas" lines="inset">
+      <ion-label>
+        <h2 [class.desactivada]="!alarma.activa">{{ alarma.titulo }}</h2>
+        <p>{{ alarma.hora }}</p>
+      </ion-label>
+
+      <ion-toggle [(ngModel)]="alarma.activa" (ionChange)="toggleAlarma(alarma)"></ion-toggle>
+
+      <ion-button color="danger" fill="clear" (click)="eliminarAlarma(alarma.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
