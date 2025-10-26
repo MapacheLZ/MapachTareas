@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="perfil-container">
+    <div class="foto-container" (click)="tomarFoto()">
+      <img *ngIf="fotoPerfil; else placeholder" [src]="fotoPerfil" alt="Foto de perfil" />
+      <ng-template #placeholder>
+        <ion-icon name="person-circle-outline" size="large"></ion-icon>
+      </ng-template>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de usuario</ion-label>
+      <ion-input [(ngModel)]="nombreUsuario"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="success" (click)="guardarPerfil()">
+      Guardar perfil
+    </ion-button>
+  </div>
+
+</ion-content>

@@ -46,6 +46,11 @@ const routes: Routes = [
     path: 'hora-tiempo-real',
     loadChildren: () => import('./pages/hora-tiempo-real/hora-tiempo-real.module').then( m => m.HoraTiempoRealPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+
   //  ERROR
   {
     path: 'not-found',
