@@ -5,14 +5,23 @@
     </ion-buttons>
     <ion-title>MapachTareas</ion-title>
   </ion-toolbar>
-
 </ion-header>
+
 <ion-content class="ion-padding">
 
-  <!-- Crear nueva alarma -->
+  <!--  Crear nueva alarma -->
   <ion-item>
-    <ion-input type="time" [(ngModel)]="nuevaHora"></ion-input>
-    <ion-input placeholder="Título" [(ngModel)]="nuevoTitulo"></ion-input>
+    <ion-input
+      type="time"
+      [(ngModel)]="nuevaHora"
+      placeholder="Hora"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Título"
+      [(ngModel)]="nuevoTitulo"
+    ></ion-input>
+
     <ion-button
       color="success"
       [@botonPulse]="botonEstado"
@@ -22,19 +31,44 @@
     </ion-button>
   </ion-item>
 
-  <!-- Listado animado -->
+  <!-- Listado de alarmas -->
   <ion-list [@listaAnimada]>
     <ion-item *ngFor="let alarma of alarmas" lines="inset">
+
+      <!-- Icono de reloj -->
+      <ion-icon name="time-outline" slot="start"></ion-icon>
+
+      <!-- Texto -->
       <ion-label>
         <h2 [class.desactivada]="!alarma.activa">{{ alarma.titulo }}</h2>
         <p>{{ alarma.hora }}</p>
       </ion-label>
 
-      <ion-toggle [(ngModel)]="alarma.activa" (ionChange)="toggleAlarma(alarma)"></ion-toggle>
+      <!-- 🔹 Botones de acción -->
+      <ion-buttons slot="end">
 
-      <ion-button color="danger" fill="clear" (click)="eliminarAlarma(alarma.id)">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-button>
+        <!-- Activar/desactivar -->
+        <ion-button fill="clear" color="medium" (click)="toggleAlarma(alarma)">
+          <ion-icon [name]="alarma.activa ? 'notifications' : 'notifications-off'"></ion-icon>
+        </ion-button>
+
+        <!-- Marcar favorito -->
+        <ion-button fill="clear" color="warning" (click)="marcarFavorito(alarma.id)">
+          <ion-icon [name]="alarma.favorita ? 'star' : 'star-outline'"></ion-icon>
+        </ion-button>
+
+        <!-- Eliminar -->
+        <ion-button fill="clear" color="danger" (click)="eliminarAlarma(alarma.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+
+      </ion-buttons>
     </ion-item>
   </ion-list>
+
+  <!-- Si no hay alarmas -->
+  <ion-text *ngIf="alarmas.length === 0" color="medium">
+    <p class="ion-text-center">No tienes alarmas guardadas ⏰</p>
+  </ion-text>
+
 </ion-content>

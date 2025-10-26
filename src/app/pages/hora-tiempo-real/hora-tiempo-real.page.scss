@@ -1,0 +1,38 @@
+.hora-content {
+  --background: linear-gradient(to bottom, #1c1c1c, #121212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hora-container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hora-icon {
+  font-size: 60px;
+  color: #ffca28;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+p {
+  color: #cccccc;
+  font-size: 1rem;
+}
+
+ion-note {
+  color: #999;
+  font-size: 0.9rem;
+}

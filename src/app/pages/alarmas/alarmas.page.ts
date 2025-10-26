@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   trigger,
   state,
@@ -8,15 +8,9 @@ import {
   query,
   stagger
 } from '@angular/animations';
-import { HoraApiService } from 'src/app/apis/hora-api'; //  importa tu servicio
 import { Subscription, interval } from 'rxjs';
-
-interface Alarma {
-  id: number;
-  hora: string;
-  titulo: string;
-  activa: boolean;
-}
+import { HoraApiService } from 'src/app/apis/hora-api';
+import { AlarmasService, Alarma } from 'src/app/services/alarmas.service'; //  Importa tu servicio actualizado
 
 @Component({
   selector: 'app-alarmas',
@@ -24,7 +18,7 @@ interface Alarma {
   styleUrls: ['./alarmas.page.scss'],
   standalone: false,
   animations: [
-    // animacion general de entrada al cargar la lista
+    // animación general de entrada al cargar la lista
     trigger('listaAnimada', [
       transition('* => *', [
         query(':enter', [
@@ -40,7 +34,7 @@ interface Alarma {
         ], { optional: true })
       ])
     ]),
-// animacion para el boton agregar
+    // animación para el botón agregar
     trigger('botonPulse', [
       state('normal', style({ transform: 'scale(1)' })),
       state('pulsado', style({ transform: 'scale(1.1)' })),
@@ -48,20 +42,23 @@ interface Alarma {
     ])
   ]
 })
-export class AlarmasPage implements OnInit {
+export class AlarmasPage implements OnInit, OnDestroy {
   alarmas: Alarma[] = [];
   nuevaHora = '';
   nuevoTitulo = '';
   botonEstado = 'normal';
   private verificador?: Subscription;
 
-  constructor(private horaApi: HoraApiService) {}
+  constructor(
+    private horaApi: HoraApiService,
+    private alarmasService: AlarmasService //  inyectamos el servicio
+  ) {}
 
-  ngOnInit() {
-    const guardadas = localStorage.getItem('alarmas');
-    if (guardadas) this.alarmas = JSON.parse(guardadas);
+  async ngOnInit() {
+    //  Carga inicial de alarmas guardadas
+    this.alarmas = await this.alarmasService.obtenerAlarmas();
 
-    // Inicia verificacion cada 15 segundos
+    //  Inicia verificación cada 15 segundos
     this.verificador = interval(15000).subscribe(() => {
       this.horaApi.obtenerHora().subscribe({
         next: (horaActual) => this.verificarAlarmas(horaActual),
@@ -74,43 +71,50 @@ export class AlarmasPage implements OnInit {
     this.verificador?.unsubscribe();
   }
 
-  agregarAlarma() {
+  //  Agregar una nueva alarma
+  async agregarAlarma() {
     if (!this.nuevaHora || !this.nuevoTitulo.trim()) return;
 
     const nueva: Alarma = {
       id: Date.now(),
       hora: this.nuevaHora,
       titulo: this.nuevoTitulo,
-      activa: true
+      activa: true,
+      favorita: false //  nueva propiedad
     };
 
-    this.alarmas.push(nueva);
-    this.guardar();
+    await this.alarmasService.agregarAlarma(nueva);
+    this.alarmas = await this.alarmasService.obtenerAlarmas();
     this.nuevaHora = '';
     this.nuevoTitulo = '';
     this.pulseBoton();
   }
 
-  eliminarAlarma(id: number) {
-    this.alarmas = this.alarmas.filter(a => a.id !== id);
-    this.guardar();
+  //  Eliminar una alarma
+  async eliminarAlarma(id: number) {
+    await this.alarmasService.eliminarAlarma(id);
+    this.alarmas = await this.alarmasService.obtenerAlarmas();
   }
 
-  toggleAlarma(alarma: Alarma) {
+  //  Activar / Desactivar una alarma
+  async toggleAlarma(alarma: Alarma) {
     alarma.activa = !alarma.activa;
-    this.guardar();
+    await this.alarmasService.guardarAlarmas(this.alarmas);
   }
 
+  //  Marcar o desmarcar como favorita
+  async marcarFavorito(id: number) {
+    await this.alarmasService.alternarFavorito(id);
+    this.alarmas = await this.alarmasService.obtenerAlarmas();
+  }
+
+  //  Efecto visual para el botón
   pulseBoton() {
     this.botonEstado = 'pulsado';
     setTimeout(() => (this.botonEstado = 'normal'), 200);
   }
 
-  private guardar() {
-    localStorage.setItem('alarmas', JSON.stringify(this.alarmas));
-  }
-
-  //  Nueva funcion para comparar hora real con alarmas activas
+  //  Verifica si una alarma coincide con la hora actual
   private verificarAlarmas(horaActual: Date) {
     const horaString = horaActual.toTimeString().slice(0, 5); // "HH:MM"
     for (const alarma of this.alarmas) {
@@ -120,11 +124,12 @@ export class AlarmasPage implements OnInit {
     }
   }
 
+  //  Reproduce sonido de alarma
   private sonarAlarma(alarma: Alarma) {
     console.log('🔔 ¡Alarma activada!', alarma);
     const audio = new Audio('assets/sonido.mp3');
     audio.play();
     alarma.activa = false; // desactiva después de sonar
-    this.guardar();
+    this.alarmasService.guardarAlarmas(this.alarmas);
   }
 }

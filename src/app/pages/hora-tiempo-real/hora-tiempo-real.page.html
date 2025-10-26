@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Hora en tiempo real</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding hora-content">
+  <div class="hora-container">
+    <ion-icon name="time-outline" class="hora-icon"></ion-icon>
+    <h1>{{ horaActual }}</h1>
+    <p>{{ fechaActual }}</p>
+
+    <ion-note>Zona horaria: {{ zona }}</ion-note>
+  </div>
+</ion-content>

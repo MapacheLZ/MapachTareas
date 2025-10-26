@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Lista de favoritos -->
+  <ion-list>
+    <ion-item *ngFor="let alarma of favoritos">
+      <ion-icon name="star" slot="start" color="warning"></ion-icon>
+      <ion-label>
+        <h2>{{ alarma.titulo }}</h2>
+        <p>{{ alarma.hora }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay favoritos -->
+  <ion-text *ngIf="favoritos.length === 0" color="medium">
+    <p class="ion-text-center">No tienes alarmas favoritas aún ⭐</p>
+  </ion-text>
+
+  <!-- Botón volver -->
+  <div class="ion-text-center" style="margin-top: 20px;">
+    <ion-button color="medium" routerLink="/alarmas">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Volver a Alarmas
+    </ion-button>
+  </div>
+
+</ion-content>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // 👇 Página inicial
+  // 🔹 Página inicial
   {
     path: '',
     pathMatch: 'full',
@@ -38,14 +38,21 @@ const routes: Routes = [
     path: 'recuperacion',
     loadChildren: () => import('./pages/recuperacion/recuperacion.module').then(m => m.RecuperacionPageModule)
   },
-
-  // ✅ Página 404 standalone
+  {
+    path: 'favoritos',
+    loadChildren: () => import('./pages/favoritos/favoritos.module').then(m => m.FavoritosPageModule)
+  },
+  {
+    path: 'hora-tiempo-real',
+    loadChildren: () => import('./pages/hora-tiempo-real/hora-tiempo-real.module').then( m => m.HoraTiempoRealPageModule)
+  },
+  //  ERROR
   {
     path: 'not-found',
     loadComponent: () => import('./pages/not-found/not-found.page').then(m => m.NotFoundPage)
   },
 
-  // 🚨 Ruta comodín: DEBE IR AL FINAL
+  //  ERROR
   {
     path: '**',
     redirectTo: 'not-found'
