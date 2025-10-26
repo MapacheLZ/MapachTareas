@@ -1,0 +1,41 @@
+:root {
+  /** 🎨 Paleta Mapache **/
+  --ion-color-primary: #4a4a4a; /* Gris oscuro (pelaje principal) */
+  --ion-color-primary-rgb: 74, 74, 74;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #3f3f3f;
+  --ion-color-primary-tint: #5c5c5c;
+
+  --ion-color-secondary: #8b7355; /* Marrón cálido */
+  --ion-color-secondary-rgb: 139, 115, 85;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-shade: #7a6449;
+  --ion-color-secondary-tint: #9b8364;
+
+  --ion-color-tertiary: #cfc0aa; /* Beige claro */
+  --ion-color-tertiary-rgb: 207, 192, 170;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-shade: #b8aa95;
+  --ion-color-tertiary-tint: #d7c8b3;
+
+  --ion-color-success: #5f865f; /* Verde musgo natural */
+  --ion-color-warning: #e3b55a; /* Dorado suave */
+  --ion-color-danger: #b34747;  /* Marrón rojizo */
+  --ion-color-medium: #9a9a9a;  /* Gris intermedio */
+  --ion-color-light: #f2f2f2;   /* Blanco del antifaz */
+  --ion-color-dark: #2c2c2c;    /* Negro del antifaz */
+
+  /** Fondo y texto global **/
+  --ion-background-color: #f8f8f8;
+  --ion-text-color: #2c2c2c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-color-primary: #2e2e2e;
+    --ion-color-secondary: #6b5843;
+    --ion-color-tertiary: #a89780;
+    --ion-background-color: #1a1a1a;
+    --ion-text-color: #f5f5f5;
+  }
+}

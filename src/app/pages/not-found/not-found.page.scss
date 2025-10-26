@@ -1,0 +1,54 @@
+ion-content.not-found-content {
+  --background: linear-gradient(to bottom, #1c1c1c, #121212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 85%;
+  max-width: 400px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.not-found-icon {
+  font-size: 70px;
+  color: #ff3b3b;
+  margin-bottom: 15px;
+}
+
+.not-found-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.not-found-text {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.not-found-button {
+  --background: #2e2e2e;
+  --background-activated: #3a3a3a;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 59, 59, 0.3);
+  letter-spacing: 0.5px;
+}

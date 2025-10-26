@@ -1,0 +1,116 @@
+ion-content {
+  --background: linear-gradient(180deg, #121212, #1c1c1c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.inicio-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Logo animado */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.logo-icon {
+  font-size: 100px;
+  color: var(--ion-color-primary);
+  animation: bounce 2s infinite;
+}
+
+/* Texto principal */
+.welcome-text {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* Tarjeta de botones */
+ion-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 360px;
+}
+
+ion-card-title {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+ion-card-subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Botones */
+ion-button {
+  --border-radius: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  height: 45px;
+  margin-top: 12px;
+}
+
+ion-button[color='primary'] {
+  --background: #2b2b2b;
+  --background-activated: #3a3a3a;
+  --color: #ffffff;
+}
+
+ion-button[color='secondary'] {
+  --background: #6d563c;
+  --background-activated: #7a6143;
+  --color: #ffffff;
+}
+
+/* Animación del logo */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsividad */
+@media (max-width: 500px) {
+  .logo-icon {
+    font-size: 80px;
+  }
+
+  .welcome-text {
+    font-size: 1.4rem;
+  }
+
+  ion-card {
+    padding: 16px;
+  }
+}

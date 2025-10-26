@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recuperar Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Buscar cuenta -->
+  <div *ngIf="paso === 'buscar'">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>¿Olvidaste tu contraseña?</ion-card-title>
+        <ion-card-subtitle>Ingresa tu correo para buscar tu cuenta</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input [(ngModel)]="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="success" (click)="buscarCuenta()">Buscar cuenta</ion-button>
+
+       <ion-button expand="block" fill="clear" color="medium" (click)="irAInicioSesion()">
+         Volver al inicio de sesión
+       </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!--  Restablecer contraseña -->
+  <div *ngIf="paso === 'restablecer'">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Restablecer contraseña</ion-card-title>
+        <ion-card-subtitle>Cuenta: <b>{{ email }}</b></ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Nueva contraseña</ion-label>
+          <ion-input [(ngModel)]="nuevaPassword" type="password"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="success" (click)="restablecerPassword()">
+          Guardar nueva contraseña
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" color="medium" (click)="paso = 'buscar'">
+          Volver
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
