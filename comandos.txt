@@ -1,0 +1,22 @@
+npm install -g @angular/cli   
+
+ionic build      
+
+npm instal @ionic/storage-angular 
+
+npm install cordova-sqlite-storage
+
+npm Audit
+
+npm audit fix
+
+ionic capacitor open Android
+
+ionic capacitor sync Android
+
+npm install @capacitor/local-notifications
+
+npx cap sync
+
+npx cap sync android
+
